@@ -83,7 +83,7 @@
     </div>
 
 </div>
-<a href="https://github.com/cyrille-leclerc/bees-shop"><img
+<a href="https://github.com/CloudBees-community/bees-shop-clickstart"><img
         style="position: absolute; top: 0; right: 0; border: 0;"
         src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </body>
