@@ -17,22 +17,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.cloudbees</groupId>
-        <artifactId>cloudbees-oss-parent</artifactId>
-        <version>2</version>
-    </parent>
+
     <groupId>com.cloudbees.demo</groupId>
     <artifactId>bees-shop-clickstart</artifactId>
     <name>bees-shop</name>
     <description>Bees Shop Demo</description>
     <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <url>https://github.com/CloudBees-community/bees-shop-clickstart</url>
-    <scm>
-        <connection>scm:git:git@github.com:CloudBees-community/bees-shop-clickstart.git</connection>
-        <developerConnection>scm:git:git@github.com:CloudBees-community/bees-shop-clickstart.git</developerConnection>
-    </scm>
+
     <dependencies>
         <!-- Spring -->
         <dependency>
@@ -136,7 +128,6 @@
         </dependency>
 
         <!-- TEST DEPENDENCIES -->
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -147,6 +138,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -167,32 +164,32 @@
                 <version>2.12.4</version>
             </plugin>
             <plugin>
-                <groupId>com.cloudbees</groupId>
-                <artifactId>bees-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>excilys</id>
+            <name>Excilys Repository</name>
+            <url>http://repository.excilys.com/content/groups/public</url>
+        </repository>
+    </repositories>
+
     <pluginRepositories>
         <pluginRepository>
-            <id>bees-plugins-snapshots</id>
-            <url>http://repository-cloudbees.forge.cloudbees.com/public-release/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <id>excilys</id>
+            <name>Excilys Repository</name>
+            <url>http://repository.excilys.com/content/groups/public</url>
         </pluginRepository>
     </pluginRepositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gatling.version>2.0.0-M2</gatling.version>
     </properties>
-    <developers>
-        <developer>
-            <id>1</id>
-            <name>Cyrille Le Clerc</name>
-            <email>cleclerc@cloudbees.com</email>
-        </developer>
-    </developers>
+
 </project>
