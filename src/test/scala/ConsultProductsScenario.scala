@@ -7,18 +7,17 @@ object ConsultProductsScenario {
 
   val products = csv("products.csv").random.build
 
-  val scn =
-    scenario("View 0 or n products")
-      .exec(
+  val scn = scenario("View 0 or n products")
+    .exec(
       http("Home page")
         .get("/")
         .check(status.is(200)))
-      .exec(
+    .exec(
       session => {
         session.set("continueShopping", true)
       }
     )
-      .asLongAs("${continueShopping}") {
+    .asLongAs("${continueShopping}") {
       randomSwitch(
         60 -> exec(
           http("View a random product")

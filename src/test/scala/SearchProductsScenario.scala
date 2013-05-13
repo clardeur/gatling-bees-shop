@@ -7,13 +7,12 @@ object SearchProductsScenario {
 
   val products = csv("products.csv").random.build
 
-  val scn =
-    scenario("Search and consult 5 products")
-      .exec(
+  val scn = scenario("Search and consult 5 products")
+    .exec(
       http("Home page")
         .get("/")
         .check(status.is(200)))
-      .repeat(5) {
+    .repeat(5) {
       exec(
         http("Search a random product")
           .get("/product/")
