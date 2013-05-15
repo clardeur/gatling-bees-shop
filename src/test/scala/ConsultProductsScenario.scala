@@ -5,7 +5,7 @@ import bootstrap._
 
 object ConsultProductsScenario {
 
-  val products = csv("products.csv").random.build
+  val products = csv("products.csv").random
 
   val scn = scenario("View 0 or n products")
     .exec(
@@ -13,27 +13,16 @@ object ConsultProductsScenario {
         .get("/")
         .check(status.is(200)))
     .exec(
-      session => {
-        session.set("continueShopping", true)
-      }
+      http("View the list of products")
+        .get("/product")
+        .check(status.is(200))
     )
-    .asLongAs("${continueShopping}") {
-      randomSwitch(
-        60 -> exec(
-          http("View a random product")
-            .get("/product/".concat(products.next().getOrElse("id", "")))
-            .check(status.is(200))
-        ),
-        20 -> exec(
-          http("View the list of products")
-            .get("/product")
-            .check(status.is(200))
-        ),
-        20 -> exec(
-          session => {
-            session.set("continueShopping", false)
-          }
-        )
+    .repeat(5) {
+      feed(products)
+      .exec(
+        http("View a random product")
+          .get("/product/${id}")
+          .check(status.is(200))
       )
     }
 }
