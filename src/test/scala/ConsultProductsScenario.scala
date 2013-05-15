@@ -15,14 +15,12 @@ object ConsultProductsScenario {
     .exec(
       http("View the list of products")
         .get("/product")
-        .check(status.is(200))
-    )
+        .check(status.is(200)))
     .repeat(5) {
       feed(products)
       .exec(
         http("View a random product")
           .get("/product/${id}")
-          .check(status.is(200))
-      )
+          .check(status.is(200)))
     }
 }
