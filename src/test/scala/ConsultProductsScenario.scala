@@ -7,7 +7,7 @@ object ConsultProductsScenario {
 
   val products = csv("products.csv").random
 
-  val scn = scenario("View 0 or n products")
+  val scn = scenario("View 5 random products")
     .exec(
       http("Home page")
         .get("/")
@@ -20,7 +20,7 @@ object ConsultProductsScenario {
       feed(products)
       .exec(
         http("View a random product")
-          .get("/product/${id}")
+          .get("/product/${productId}")
           .check(status.is(200)))
     }
 }
