@@ -18,8 +18,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cloudbees.demo</groupId>
-    <artifactId>bees-shop-clickstart</artifactId>
+    <groupId>io.clardeur</groupId>
+    <artifactId>gatling-bees-shop</artifactId>
     <name>bees-shop</name>
     <description>Bees Shop Demo</description>
     <packaging>war</packaging>
@@ -145,6 +145,11 @@
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.0</version>
             </plugin>
         </plugins>
     </build>
