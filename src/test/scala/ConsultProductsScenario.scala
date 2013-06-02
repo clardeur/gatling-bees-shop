@@ -19,7 +19,7 @@ object ConsultProductsScenario {
     .repeat(5) {
       feed(products)
       .exec(
-        http("View a random product")
+        http("View a product")
           .get("/product/${productId}")
           .check(status.is(200)))
     }
