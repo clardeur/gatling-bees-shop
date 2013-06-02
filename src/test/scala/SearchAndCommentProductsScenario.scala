@@ -2,7 +2,7 @@
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
-object SearchAndCommentAProductScenario {
+object SearchAndCommentProductsScenario {
 
   val products = csv("products.csv").random
 
