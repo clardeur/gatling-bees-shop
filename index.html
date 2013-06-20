@@ -39,44 +39,43 @@
                 Bees-shop
             </h3>
 
-            <a href="http://bees-shop.clardeur.cloudbees.net/">
-                Deployed on Cloudbees : http://bees-shop.clardeur.cloudbees.net/
-            </a>
+            Deployed on Cloudbees <a href="http://bees-shop.clardeur.cloudbees.net/">here</a>.
 
             <h3>
                 <a name="simulation1" class="anchor" href="#simulation1"><span class="octicon octicon-link"></span></a>
                 Simulation 1
             </h3>
 
-            <pre>
-                <code>ConsultProductsScenario.scn.inject(ramp(10000 users) over (2
-                    minutes)).protocolConfig(httpConf)</code>
-            </pre>
+<pre><code>
+ConsultProductsScenario.scn
+    .inject(ramp(10000 users) over (2 minutes))
+    .protocolConfig(httpConf)
+</code></pre>
 
-            <span>Results : <a
-                    href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130529134901">http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130529134901/</a></span>
+            <p>
+                Results from the simulation 1 are here<a href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130529134901">here</a>.
+            </p>.
 
             <h3>
                 <a name="simulation2" class="anchor" href="#simulation2"><span class="octicon octicon-link"></span></a>
                 Simulation 2
             </h3>
 
-            <pre>
-                <code>
-                    ConsultProductsScenario.scn
-                    .inject(ramp(8000 users) over (2 minutes))
-                    .protocolConfig(httpConf),
-                    AddProductsInCartScenario.scn
-                    .inject(nothingFor(1 minutes), ramp(3000 users) over (40 seconds))
-                    .protocolConfig(httpConf),
-                    SearchAndCommentProductsScenario.scn
-                    .inject(nothingFor(100 seconds), atOnce(500 users))
-                    .protocolConfig(httpConf)
-                </code>
-            </pre>
+<pre><code>
+ConsultProductsScenario.scn
+    .inject(ramp(8000 users) over (2 minutes))
+    .protocolConfig(httpConf),
+AddProductsInCartScenario.scn
+    .inject(nothingFor(1 minutes), ramp(3000 users) over (40 seconds))
+    .protocolConfig(httpConf),
+SearchAndCommentProductsScenario.scn
+    .inject(nothingFor(100 seconds), atOnce(500 users))
+    .protocolConfig(httpConf)
+</code></pre>
 
-            <span>Results : <a
-                    href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130604131958/">http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130604131958/</a></span>
+            <p>
+                Results of simulation 2 are <a href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130604131958/">here</a>.
+            </p>
 
             <footer>
                 Gatling Stress Tool is maintained by <a href="https://github.com/clardeur">clardeur</a><br>
