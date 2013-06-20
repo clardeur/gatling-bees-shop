@@ -1,4 +1,7 @@
-demo-bees-shop
+Gatling Stress Tool
 ==============
 
-demo-bees-shop
+Make fun with Gatling on bees-shop webapp (from Cloudbees)
+
+See: http://clardeur.github.io/gatling-bees-shop/
+
