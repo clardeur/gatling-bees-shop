@@ -47,13 +47,13 @@
             </h3>
 
 <pre><code>
-ConsultProductsScenario.scn
-    .inject(ramp(10000 users) over (2 minutes))
+  ConsultProductsScenario.scn
+    .inject(rampRate(10 usersPerSec) to(100 usersPerSec) during(5 minutes))
     .protocolConfig(httpConf)
 </code></pre>
 
             <p>
-                Results from the simulation 1 are <a href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130529134901">here</a>.
+                Results from the simulation 1 are <a href="http://clardeur.github.io/gatling-bees-shop/reports/beesshopsimulation-20130701154641">here</a>.
             </p>.
 
             <h3>
