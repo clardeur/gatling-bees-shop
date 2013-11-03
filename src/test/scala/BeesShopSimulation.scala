@@ -11,8 +11,6 @@ class BeesShopSimulation extends Simulation {
   val httpConf = http.baseURL(s"http://localhost:$port/gatling-bees-shop")
 
   setUp(
-    ConsultProductsScenario.scn.inject(ramp(100 users) over (20 seconds)),
-    AddProductsInCartScenario.scn.inject(ramp(100 users) over (20 seconds)),
-    SearchAndCommentProductsScenario.scn.inject(ramp(100 users) over (20 seconds))
+    ConsultProductsScenario.scn.inject(rampRate(10 usersPerSec) to(200 usersPerSec) during(30 seconds))
   ).protocols(httpConf)
 }
