@@ -28,6 +28,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gatling.version>2.0.0-M3a</gatling.version>
+        <host>localhost</host>
+        <port>29090</port>
     </properties>
 
     <repositories>
@@ -145,14 +147,42 @@
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling.version}</version>
-                <configuration>
-                    <simulationClass>BeesShopSimulation</simulationClass>
-                </configuration>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <simulationClass>BeesShopSimulation</simulationClass>
+                            <propagateSystemProperties>true</propagateSystemProperties>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.0</version>
+                <executions>
+                    <execution>
+                        <id>start-tomcat</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <fork>true</fork>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-tomcat</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>shutdown</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
