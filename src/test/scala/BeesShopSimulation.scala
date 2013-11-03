@@ -5,17 +5,11 @@ import scala.concurrent.duration._
 
 class BeesShopSimulation extends Simulation {
 
-  val httpConf = httpConfig.baseURL("http://localhost:8080/gatling-bees-shop")
+  val httpConf = http.baseURL("http://localhost:8080/gatling-bees-shop")
 
   setUp(
-    ConsultProductsScenario.scn
-      .inject(ramp(1000 users) over (1 minute))
-      .protocolConfig(httpConf),
-    AddProductsInCartScenario.scn
-      .inject(nothingFor(10 seconds), ramp(500 users) over (40 seconds))
-      .protocolConfig(httpConf),
-    SearchAndCommentProductsScenario.scn
-      .inject(nothingFor(40 seconds), atOnce(200 users))
-      .protocolConfig(httpConf)
-  )
+    ConsultProductsScenario.scn.inject(ramp(100 users) over (20 seconds)),
+    AddProductsInCartScenario.scn.inject(ramp(100 users) over (20 seconds)),
+    SearchAndCommentProductsScenario.scn.inject(ramp(100 users) over (20 seconds))
+  ).protocols(httpConf)
 }

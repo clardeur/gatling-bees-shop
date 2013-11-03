@@ -18,7 +18,7 @@ object AddProductsInCartScenario {
         .check(status.is(200))
         .check(regex(numberOfProductsRegex).find.transform(_.map(_.toInt)).is(0).saveAs(numberOfProducts)))
       .feed(products)
-      .asLongAs(_.get[Int](numberOfProducts, Int.MaxValue) < 3) {
+      .asLongAs(_.apply(numberOfProducts).as[Int] < 3) {
         exec(
           http("View a product")
             .get("/product/${productId}")

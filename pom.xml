@@ -27,7 +27,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gatling.version>2.0.0-M2</gatling.version>
+        <gatling.version>2.0.0-M3a</gatling.version>
     </properties>
 
     <repositories>
@@ -145,6 +145,9 @@
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling.version}</version>
+                <configuration>
+                    <simulationClass>BeesShopSimulation</simulationClass>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
