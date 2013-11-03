@@ -6,20 +6,12 @@ object ConsultProductsScenario {
 
   val products = csv("products.csv").random
 
+  // TODO #1: Scenario 'View 5 random products'
+  /**
+   *  Scenario name: 'View 5 random products'
+   *   - view the home page
+   *   - view the list of products
+   *   - view 5 random products
+   */
   val scn = scenario("View 5 random products")
-    .exec(
-      http("Home page")
-        .get("/")
-        .check(status.is(200)))
-    .exec(
-      http("View the list of products")
-        .get("/product")
-        .check(status.is(200)))
-    .repeat(5) {
-      feed(products)
-      .exec(
-        http("View a product")
-          .get("/product/${productId}")
-          .check(status.is(200)))
-    }
 }

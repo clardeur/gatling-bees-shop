@@ -8,30 +8,15 @@ object AddProductsInCartScenario {
 
   val products = csv("products.csv").random.build
   val numberOfProductsRegex: (Session) => Validation[String] = """(\d+) items"""
-  val numberOfProducts: String = "numberOfProductsInCart"
 
-  val scn = {
-    scenario("Add 3 products in cart")
-      .exec(
-      http("Home page")
-        .get("/")
-        .check(status.is(200))
-        .check(regex(numberOfProductsRegex).find.transform(_.map(_.toInt)).is(0).saveAs(numberOfProducts)))
-      .feed(products)
-      .asLongAs(_.apply(numberOfProducts).as[Int] < 3) {
-        exec(
-          http("View a product")
-            .get("/product/${productId}")
-            .check(status.is(200)))
-          .randomSwitch(
-          70 -> pause(1 second, 5 seconds),
-          30 -> exec(
-            http("Add a product in cart")
-              .post("/cart/add")
-              .param("product", "${productId}")
-              .param("quantity", "1")
-              .check(status.is(200))
-              .check(regex(numberOfProductsRegex).find.transform(_.map(_.toInt)).exists.saveAs(numberOfProducts))))
-    }
-  }
+  // TODO #4: Scenario 'Add 3 products in cart'
+  /**
+   *   Scenario name: 'Add 3 products in cart'
+   *     - view the home page and verify that the cart is empty
+   *     - randomly view a product as long as the number of products in the cart is not 3
+   *        - 30% chance to add a product into the cart when consulting it
+   *        - else pause 1 to 5 seconds on it
+   */
+  val scn = scenario("Add 3 products in cart")
+
 }
