@@ -17,7 +17,7 @@ Hand's On
 
     mvn clean tomcat7:run
     
-Visit the bees shop : [here](http://localhost:8080/galtling-bees-shop/ "here")
+Visit the bees shop : [here](http://localhost:8080/gatling-bees-shop/ "here")
 
 Browse the site to see what kinds of products are sold (*Djerba Style?*)
 
